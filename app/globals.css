@@ -1,7 +1,21 @@
+@font-face {
+  font-family: "Regular";
+  src: url("../fonts/GT-Walsheim-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Medium";
+  src: url("../fonts/GT-Walsheim-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 html,
 body {
   margin: 2rem auto;
-  max-width: 50vw;
+  max-width: 40vw;
   overflow-x: hidden;
 }
 
@@ -15,4 +29,15 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+h2 {
+  margin-bottom: 2rem;
+  color: var(--iris-color-indigo-700);
+  font-family: var(--iris-font-medium);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: center;
 }
