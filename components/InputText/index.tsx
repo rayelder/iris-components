@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+// import "../../app/design-tokens/primitives.css";
 import styles from "./InputText.module.css";
 
 interface InputTextProps {
@@ -37,6 +38,7 @@ export default function InputText({ label, value, onChange }: InputTextProps) {
       >
         {label}
       </label>
+      <div className={styles.error}>Please enter the card holder name.</div>
     </div>
   );
 }

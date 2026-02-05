@@ -1,34 +1,56 @@
+/* @import "../../app/design-tokens/primitives.css"; */
+
 .base {
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--iris-form-gap);
 }
 
 .input {
   width: 100%;
-  padding: 1.5rem 0.75rem 0.5rem 0.75rem;
-  border: 1px solid #f00;
-  border-radius: 4px;
-  font-size: 1rem;
+  height: 3.5rem;
+  padding: 1.5rem 0.8125rem 0.5rem 0.875rem;
+  border: 1px solid var(--iris-color-form-stroke-enabled);
+  border-radius: var(--iris-radius-sm);
+  font-family: var(--iris-font-regular);
+  font-size: var(--iris-font-size-base);
   transition: border-color 0.2s;
 }
 
 .input:focus {
-  outline: none;
-  border-color: #3b82f6;
+  outline: 3px solid var(--iris-color-form-stroke-focus-ring);
+  outline-offset: 0px;
+  border-color: var(--iris-color-form-stroke-focus);
 }
 
 .label {
   position: absolute;
-  left: 0.75rem;
-  top: 1rem;
-  font-size: 1rem;
-  color: #6b7280;
+  left: 0.8125rem;
+  /* top: 1rem; */
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-family: var(--iris-font-regular);
+  font-size: var(--iris-font-size-base);
+  color: var(--iris-color-form-text-placeholder);
   pointer-events: none;
   transition: all 0.2s ease-in-out;
 }
 
 .labelFloating {
-  top: 0.25rem;
-  font-size: 0.75rem;
-  color: #3b82f6;
+  left: 0.9375rem;
+  top: 0.9375rem;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-sm);
+  color: var(--iris-color-form-text-placeholder);
+}
+
+.error {
+  display: none;
+  margin-top: var(--iris-form-gap);
+  color: var(--iris-color-form-text-invalid, #d9230c);
+  font-family: var(--iris-font-regular);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%; /* 16.25px */
 }
