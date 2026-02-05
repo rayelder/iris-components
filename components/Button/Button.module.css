@@ -11,3 +11,13 @@
   cursor: pointer;
   border: none;
 }
+
+.rounded {
+  composes: base;
+  border-radius: var(--iris-radius-sm);
+}
+
+.pill {
+  composes: base;
+  border-radius: var(--iris-radius-pill);
+}

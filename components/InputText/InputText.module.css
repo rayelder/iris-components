@@ -25,10 +25,8 @@
 .label {
   position: absolute;
   left: 0.8125rem;
-  /* top: 1rem; */
   top: 50%;
   transform: translateY(-50%);
-
   font-family: var(--iris-font-regular);
   font-size: var(--iris-font-size-base);
   color: var(--iris-color-form-text-placeholder);
@@ -41,7 +39,7 @@
   top: 0.9375rem;
   font-family: var(--iris-font-medium);
   font-size: var(--iris-font-size-sm);
-  color: var(--iris-color-form-text-placeholder);
+  color: var(--iris-color-form-text-label);
 }
 
 .error {
