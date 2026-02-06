@@ -5,7 +5,6 @@
   cursor: pointer;
   position: relative;
   user-select: none;
-  margin-bottom: var(--iris-form-gap);
 }
 
 .input {
@@ -14,11 +13,11 @@
   cursor: pointer;
 }
 
-.checkmark {
+.radio {
   width: 1.75rem;
   height: 1.75rem;
   border: 1px solid var(--iris-color-form-stroke-enabled);
-  border-radius: var(--iris-radius-sm);
+  border-radius: 50%;
   background-color: var(--iris-color-form-background);
   transition: all 0.2s;
   flex-shrink: 0;
@@ -27,37 +26,38 @@
   justify-content: center;
 }
 
-.checkmark svg {
-  display: none;
+.radio::after {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: white;
+  transform: scale(0);
+  transition: transform 0.2s;
 }
 
-.input:checked ~ .checkmark svg {
-  display: block;
-}
-
-.input:checked ~ .checkmark {
+.input:checked ~ .radio {
   background-color: var(--iris-color-indigo-700);
-  border-color: var(--iris-color-indigo-700) !important;
+  border-color: var(--iris-color-indigo-700);
 }
 
-.input:checked ~ .checkmark::after {
-  display: block;
+.input:checked ~ .radio::after {
+  transform: scale(1);
 }
 
-.input:hover ~ .checkmark {
-  border-color: var(--iris-color-form-stroke-hover);
-}
-
-.input:focus ~ .checkmark {
+.input:focus ~ .radio {
   outline: 3px solid var(--iris-color-form-stroke-focus-ring);
   outline-offset: 0px;
-  border-color: var(--iris-color-form-stroke-focus) !important;
+}
+
+.radio:hover {
+  border-color: var(--iris-color-form-stroke-hover);
 }
 
 .label {
   font-family: var(--iris-font-regular);
   font-size: var(--iris-font-size-base);
-  color: var(--iris-color-text-primary, #000);
+  color: var(--iris-color-neutral-800);
 }
 
 .disabled {

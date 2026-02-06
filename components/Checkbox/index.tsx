@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./Checkbox.module.css";
+import Icon from "../Icon";
 
 interface CheckboxProps {
   label: string;
@@ -19,6 +20,7 @@ export default function Checkbox({
   const [isChecked, setIsChecked] = useState(checked);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // console.log("Mouse up event:", e);
     const newChecked = e.target.checked;
     setIsChecked(newChecked);
     onChange?.(newChecked);
@@ -34,21 +36,7 @@ export default function Checkbox({
         className={styles.input}
       />
       <span className={styles.checkmark}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-        >
-          <path
-            d="M14 4L6 12L2 8"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Icon name="check" color="#fff" stroke="3" />
       </span>
       <span className={styles.label}>{label}</span>
     </label>

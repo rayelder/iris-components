@@ -1,0 +1,6 @@
+.base {
+  display: flex;
+  margin: 0;
+  padding: 2rem;
+  gap: 2rem;
+}

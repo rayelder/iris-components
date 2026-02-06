@@ -1,5 +1,11 @@
-.form {
-  padding: 3px;
+.form,
+.page {
+  margin: 3rem auto;
+  padding: 2rem;
+  width: 40vw;
+  background-color: var(--iris-color-white);
+  border-radius: var(--iris-radius-xl);
+  box-shadow: 0 8px 16px var(--iris-color-neutral-300);
 }
 
 .row {
@@ -9,4 +15,10 @@
 
 .row > * {
   flex: 1;
+}
+
+.br {
+  border-top: 1px solid var(--iris-color-neutral-300);
+  margin-top: 2rem;
+  padding-top: 1rem;
 }
