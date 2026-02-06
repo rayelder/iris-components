@@ -1,16 +1,21 @@
-import Button from "@/components/Button";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All form elements - Forms - Iris Design System",
+};
+
 import Checkbox from "@/components/Checkbox";
 import InputSecurityCode from "@/components/InputSecurityCode";
 import InputText from "@/components/InputText";
 import Nav from "@/components/Nav";
 import Radio from "@/components/Radio";
+import RadioGroup from "@/components/RadioGroup";
 import Select from "@/components/Select";
 import Textarea from "@/components/Textarea";
 
 import styles from "../../page.module.css";
-import RadioGroup from "@/components/RadioGroup";
 
-export default function Home() {
+export default function FormElements() {
   return (
     <>
       <Nav />
@@ -30,8 +35,8 @@ export default function Home() {
         </RadioGroup>
         <h3>RadioGroup - Horizontal</h3>
         <RadioGroup label="Label" name="radio-group-h" direction="horizontal">
-          <Radio label="Option label" value="option4" />
-          <Radio label="Option label" value="option5" />
+          <Radio label="Option label 1" value="option4" />
+          <Radio label="Option label 2" value="option5" />
         </RadioGroup>
         <h3>Select</h3>
         <Select

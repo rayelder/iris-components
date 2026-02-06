@@ -1,12 +1,16 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Email us - Forms - Iris Design System",
+};
+
 import Button from "@/components/Button";
-import InputSecurityCode from "@/components/InputSecurityCode";
 import InputText from "@/components/InputText";
 import Nav from "@/components/Nav";
-
-import styles from "../../page.module.css";
-import Checkbox from "@/components/Checkbox";
 import Select from "@/components/Select";
 import Textarea from "@/components/Textarea";
+
+import styles from "../../page.module.css";
 
 export default function EmailUs() {
   return (

@@ -1,12 +1,18 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shipping Address - Forms - Iris Design System",
+};
+
 import Button from "@/components/Button";
+import Checkbox from "@/components/Checkbox";
 import InputText from "@/components/InputText";
 import Nav from "@/components/Nav";
-
-import styles from "../../page.module.css";
-import Checkbox from "@/components/Checkbox";
 import Select from "@/components/Select";
 
-export default function Home() {
+import styles from "../../page.module.css";
+
+export default function ShippingAddress() {
   return (
     <>
       <Nav />

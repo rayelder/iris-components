@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Iris Design System",
+};
+
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import styles from "./page.module.css";
