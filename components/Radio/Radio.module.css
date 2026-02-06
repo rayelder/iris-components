@@ -54,10 +54,14 @@
   border-color: var(--iris-color-form-stroke-hover);
 }
 
+.input:checked ~ .label {
+  color: var(--iris-color-neutral-800);
+}
+
 .label {
   font-family: var(--iris-font-regular);
   font-size: var(--iris-font-size-base);
-  color: var(--iris-color-neutral-800);
+  color: var(--iris-color-form-text-placeholder);
 }
 
 .disabled {

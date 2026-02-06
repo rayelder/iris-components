@@ -18,6 +18,12 @@
   align-items: center;
 }
 
+.select:focus {
+  outline: 3px solid var(--iris-color-form-stroke-focus-ring);
+  outline-offset: 0px;
+  border-color: var(--iris-color-form-stroke-focus) !important;
+}
+
 .disabled {
   background-color: var(--iris-color-form-fill-disabled);
   border-color: var(--iris-color-form-stroke-disabled);
