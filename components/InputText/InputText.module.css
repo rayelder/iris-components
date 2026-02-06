@@ -16,10 +16,24 @@
   transition: border-color 0.2s;
 }
 
+.disabled {
+  composes: input;
+  background-color: var(--iris-color-form-fill-disabled);
+  border-color: var(--iris-color-form-stroke-disabled);
+  color: var(--iris-color-form-text-disabled);
+  cursor: not-allowed;
+}
+
+.input:hover:not(:disabled) {
+  /* outline: 3px solid var(--iris-color-form-stroke-focus-ring); */
+  /* outline-offset: 0px; */
+  border-color: var(--iris-color-form-stroke-hover);
+}
+
 .input:focus {
   outline: 3px solid var(--iris-color-form-stroke-focus-ring);
   outline-offset: 0px;
-  border-color: var(--iris-color-form-stroke-focus);
+  border-color: var(--iris-color-form-stroke-focus) !important;
 }
 
 .label {
