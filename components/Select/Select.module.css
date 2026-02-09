@@ -84,17 +84,17 @@
   background-color: var(--iris-color-white);
   border: 1px solid var(--iris-color-form-stroke-enabled);
   border-radius: var(--iris-radius-sm);
-  box-shadow: 0 8px 16px var(--iris-color-neutral-300);
+  /* box-shadow: 0 8px 16px var(--iris-color-neutral-300); */
   list-style: none;
   margin: 0;
-  padding: 4px;
-  max-height: 15rem;
+  padding: 4px 4px 0px 4px;
+  /* max-height: 15rem; */
   overflow-y: auto;
   z-index: 1000;
 }
 
 .option {
-  padding: 1rem 2.5rem;
+  padding: 1rem 1rem;
   font-family: var(--iris-font-regular);
   font-size: var(--iris-font-size-base);
   color: var(--iris-color-neutral-700);
@@ -111,9 +111,8 @@
 
 .optionSelected {
   display: flex;
-  gap: 0.5rem;
+  justify-content: space-between;
   padding: 1rem 1rem;
   color: var(--iris-color-neutral-800);
   background-color: var(--iris-color-neutral-200);
-  /* font-family: var(--iris-font-medium); */
 }

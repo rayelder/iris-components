@@ -96,8 +96,8 @@ export default function Select({
               }`}
               onClick={() => handleSelect(option.value)}
             >
-              {option.value === selectValue && <Icon name="check" />}
               {option.label}
+              {option.value === selectValue && <Icon name="check" />}
             </li>
           ))}
         </ul>
