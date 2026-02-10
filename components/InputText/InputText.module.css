@@ -94,3 +94,17 @@
   transform: translateY(-60%);
   pointer-events: none; /* Make icon non-clickable, or remove if clickable */
 }
+
+.inputError ~ .icon svg path:not(g path) {
+  /* stroke: red !important; */
+  stroke: var(--iris-color-red-600) !important;
+  fill: transparent !important;
+}
+
+.inputError ~ .icon svg g path {
+  fill: var(--iris-color-red-600) !important;
+}
+
+.inputError ~ .icon svg rect {
+  fill: var(--iris-color-red-600) !important;
+}

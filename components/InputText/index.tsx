@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ccNameValidation,
   ccNumberValidation,
@@ -24,6 +24,7 @@ interface InputTextProps {
     | "expiration"
     | "securityCode";
   showTrailingIcon?: boolean;
+  shouldValidate?: boolean;
 }
 
 export default function InputText({
@@ -33,6 +34,7 @@ export default function InputText({
   onChange,
   validationSchema,
   showTrailingIcon = false,
+  shouldValidate = false,
 }: InputTextProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState(value);
@@ -55,6 +57,21 @@ export default function InputText({
         return null;
     }
   };
+
+  const validateInput = (val: string) => {
+    const schema = getValidationSchema(validationSchema);
+    if (!schema) return;
+    const result = schema.safeParse(val);
+    setError(
+      result.success ? "" : result.error.issues[0]?.message || "Invalid",
+    );
+  };
+
+  useEffect(() => {
+    if (shouldValidate) {
+      validateInput(inputValue);
+    }
+  }, [shouldValidate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);

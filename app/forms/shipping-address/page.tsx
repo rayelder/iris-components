@@ -29,8 +29,8 @@ export default function ShippingAddress() {
             label="State"
             value=""
             options={[
-              { value: "ut", label: "Utah" },
-              { value: "ca", label: "California" },
+              { value: "ut", label: "UT" },
+              { value: "ca", label: "CA" },
             ]}
           />
           <InputText label="Zip code" value="" />

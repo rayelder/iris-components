@@ -5,7 +5,6 @@ export const metadata: Metadata = {
 };
 
 import Checkbox from "@/components/Checkbox";
-import InputSecurityCode from "@/components/InputSecurityCode";
 import InputText from "@/components/InputText";
 import Nav from "@/components/Nav";
 import Radio from "@/components/Radio";
@@ -26,7 +25,7 @@ export default function FormElements() {
         <h3>InputText</h3>
         <InputText label="Label" value="" />
         <h3>InputSecurityCode</h3>
-        <InputSecurityCode label="Label" value="" />
+        <InputText label="Label" value="" showTrailingIcon />
         <h3>RadioGroup - Vertical</h3>
         <RadioGroup label="Label" name="radio-group-v" direction="vertical">
           <Radio label="Option label 1" value="option1" />

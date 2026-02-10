@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent } from "react";
+import { useState } from "react";
 
 import Button from "@/components/Button";
 import InputText from "@/components/InputText";
@@ -8,22 +9,40 @@ import InputText from "@/components/InputText";
 import styles from "@/app/page.module.css";
 
 export default function AddPaymentForm() {
+  const [validateAll, setValidateAll] = useState(false);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("--> Form submitted");
+    setValidateAll(true);
   };
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h1>Add payment method</h1>
-      <InputText label="Card holder name" value="" validationSchema="ccName" />
-      <InputText label="Card number" value="" validationSchema="ccNumber" />
+      <InputText
+        label="Card holder name"
+        value=""
+        validationSchema="ccName"
+        shouldValidate={validateAll}
+      />
+      <InputText
+        label="Card number"
+        value=""
+        validationSchema="ccNumber"
+        shouldValidate={validateAll}
+      />
       <div className={styles.row}>
-        <InputText label="Expiration" value="" validationSchema="expiration" />
+        <InputText
+          label="Expiration"
+          value=""
+          validationSchema="expiration"
+          shouldValidate={validateAll}
+        />
         <InputText
           label="Security code"
           value=""
           validationSchema="securityCode"
           showTrailingIcon
+          shouldValidate={validateAll}
         />
       </div>
       <Button label="Add payment method" isPrimary />

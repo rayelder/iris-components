@@ -46,9 +46,8 @@
 }
 
 .secondary:hover {
-  /* composes: base; */
   color: var(--iris-color-indigo-700);
-  background: var(--iris-color-indigo-100);
+  background: transparent;
   border: 2px solid var(--iris-color-indigo-700);
 }
 
