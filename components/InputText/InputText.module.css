@@ -55,12 +55,32 @@
 }
 
 .error {
-  display: none;
-  margin-top: var(--iris-form-gap);
+  margin-bottom: 1rem;
   color: var(--iris-color-form-text-invalid, #d9230c);
   font-family: var(--iris-font-regular);
-  font-size: 13px;
+  font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 125%; /* 16.25px */
+}
+
+.inputError {
+  border-color: var(--iris-color-form-stroke-invalid);
+  color: var(--iris-color-form-text-invalid);
+  background-color: var(--iris-color-form-fill-invalid);
+}
+
+.inputError:hover {
+  border-color: var(--iris-color-form-stroke-invalid) !important;
+}
+
+.inputError ~ .label {
+  /* border-color: var(--iris-color-form-stroke-invalid); */
+  color: var(--iris-color-form-text-invalid);
+  /* background-color: var(--iris-color-form-fill-invalid); */
+}
+
+.inputError:focus {
+  outline: 3px solid var(--iris-color-form-stroke-invalid-focus-ring);
+  /* outline-offset: 0px; */
+  border-color: var(--iris-color-form-stroke-invalid) !important;
 }

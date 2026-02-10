@@ -2,7 +2,7 @@
 .page {
   margin: 3rem auto;
   padding: 2rem;
-  width: 40vw;
+  width: 50vw;
   background-color: var(--iris-color-white);
   border-radius: var(--iris-radius-xl);
   box-shadow: 0 8px 16px var(--iris-color-neutral-300);
