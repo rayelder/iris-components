@@ -8,7 +8,11 @@ export default function Button({
   isPill?: boolean;
 }) {
   return (
-    <button className={isPill ? styles.pill : styles.rounded} type="submit">
+    <button
+      className={isPill ? styles.pill : styles.rounded}
+      type="submit"
+      tabIndex={0}
+    >
       {label}
     </button>
   );
