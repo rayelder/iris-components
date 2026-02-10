@@ -23,7 +23,6 @@ export default function ShippingAddress() {
           <InputText label="Last name" value="" />
         </div>
         <InputText label="Street address" value="" />
-
         <div className={styles.row}>
           <InputText label="City" value="" />
           <Select
