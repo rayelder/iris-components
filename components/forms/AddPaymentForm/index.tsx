@@ -17,7 +17,16 @@ export default function AddPaymentForm() {
       <h1>Add payment method</h1>
       <InputText label="Card holder name" value="" validationSchema="ccName" />
       <InputText label="Card number" value="" validationSchema="ccNumber" />
-      <Button label="Add payment method" />
+      <div className={styles.row}>
+        <InputText label="Expiration" value="" validationSchema="expiration" />
+        <InputText
+          label="Security code"
+          value=""
+          validationSchema="securityCode"
+          showTrailingIcon
+        />
+      </div>
+      <Button label="Add payment method" isPrimary />
     </form>
   );
 }

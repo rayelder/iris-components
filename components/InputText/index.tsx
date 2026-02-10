@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { z } from "zod";
-import { ccNameValidation, ccNumberValidation } from "@/lib/schemas/shared";
+import {
+  ccNameValidation,
+  ccNumberValidation,
+  expirationValidation,
+  securityCodeValidation,
+} from "@/lib/schemas/shared";
+
+import Icon from "../Icon";
 
 import styles from "./InputText.module.css";
 
@@ -11,7 +17,13 @@ interface InputTextProps {
   value: string;
   disabled?: boolean;
   onChange?: (value: string) => void;
-  validationSchema?: "ccName" | "ccNumber" | "email";
+  validationSchema?:
+    | "ccName"
+    | "ccNumber"
+    | "email"
+    | "expiration"
+    | "securityCode";
+  showTrailingIcon?: boolean;
 }
 
 export default function InputText({
@@ -20,6 +32,7 @@ export default function InputText({
   disabled = false,
   onChange,
   validationSchema,
+  showTrailingIcon = false,
 }: InputTextProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState(value);
@@ -34,6 +47,10 @@ export default function InputText({
         return ccNameValidation;
       case "ccNumber":
         return ccNumberValidation;
+      case "expiration":
+        return expirationValidation;
+      case "securityCode":
+        return securityCodeValidation;
       default:
         return null;
     }
@@ -79,6 +96,11 @@ export default function InputText({
         >
           {label}
         </label>
+        {showTrailingIcon && (
+          <div className={styles.icon}>
+            <Icon />
+          </div>
+        )}
       </div>
       {error && <div className={styles.error}>{error}</div>}
     </div>
