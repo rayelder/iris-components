@@ -1,0 +1,24 @@
+.base {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--iris-form-gap);
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 1.25rem 0 1rem;
+  border: 1px solid var(--iris-color-form-stroke-invalid);
+  border-radius: var(--iris-radius-sm);
+  color: var(--iris-color-form-text-invalid);
+  font-family: var(--iris-font-regular);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  background-color: var(--iris-color-form-fill-invalid);
+  transition: border-color 0.2s;
+}
+
+.iconAndMessage {
+  display: flex;
+  align-items: center;
+  gap: var(--iris-form-gap);
+}

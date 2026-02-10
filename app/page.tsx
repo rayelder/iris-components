@@ -22,6 +22,9 @@ export default function Home() {
             <Link href="/forms/email-us">Email us</Link>
           </li>
           <li>
+            <Link href="/forms/login">Log in</Link>
+          </li>
+          <li>
             <Link href="/forms/shipping-address">Shipping address</Link>
           </li>
         </ul>

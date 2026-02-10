@@ -11,7 +11,7 @@ interface InputTextProps {
   value: string;
   disabled?: boolean;
   onChange?: (value: string) => void;
-  validationSchema?: "ccName" | "ccNumber";
+  validationSchema?: "ccName" | "ccNumber" | "email";
 }
 
 export default function InputText({
@@ -63,8 +63,8 @@ export default function InputText({
   };
 
   return (
-    <div>
-      <div className={styles.base}>
+    <div className={styles.base}>
+      <div className={styles.inputBase}>
         <input
           type="text"
           value={inputValue}

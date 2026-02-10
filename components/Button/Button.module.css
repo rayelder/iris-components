@@ -16,16 +16,47 @@
 }
 
 .base:focus {
-  outline: 3px solid var(--iris-color-orange-600);
-  outline-offset: 2px;
+  outline: none;
+}
+
+.base:focus-visible {
+  outline: 3px solid var(--iris-color-orange-300);
+  outline-offset: 0px;
 }
 
 .rounded {
-  composes: base;
+  /* composes: base; */
   border-radius: var(--iris-radius-sm);
 }
 
 .pill {
-  composes: base;
+  /* composes: base; */
   border-radius: var(--iris-radius-pill);
+}
+
+.primary {
+  composes: base;
+}
+
+.secondary {
+  composes: base;
+  color: var(--iris-color-indigo-600);
+  background: transparent;
+  border: 2px solid var(--iris-color-indigo-600);
+}
+
+.secondary:hover {
+  /* composes: base; */
+  color: var(--iris-color-indigo-700);
+  background: var(--iris-color-indigo-100);
+  border: 2px solid var(--iris-color-indigo-700);
+}
+
+.secondary:focus {
+  outline: none;
+}
+
+.secondary:focus-visible {
+  outline: 3px solid var(--iris-color-indigo-300);
+  outline-offset: 0px;
 }

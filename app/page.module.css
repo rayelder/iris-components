@@ -22,3 +22,9 @@
   margin-top: 2rem;
   padding-top: 1rem;
 }
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--iris-form-gap);
+}

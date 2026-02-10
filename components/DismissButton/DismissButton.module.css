@@ -1,0 +1,16 @@
+.base {
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0.125rem;
+  border-radius: var(--iris-radius-xs);
+  transition: background-color 0.2s;
+}
+
+.base:hover {
+  background-color: var(--iris-color-red-200);
+  cursor: pointer;
+}
+
+.base:hover path {
+  stroke: var(--iris-color-red-700);
+}

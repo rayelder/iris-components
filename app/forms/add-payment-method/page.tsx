@@ -11,7 +11,7 @@ import InputText from "@/components/InputText";
 import Nav from "@/components/Nav";
 
 import styles from "../../page.module.css";
-import AddPaymentForm from "@/components/AddPaymentForm";
+import AddPaymentForm from "@/components/forms/AddPaymentForm";
 
 export default function AddPaymentMethod() {
   return (

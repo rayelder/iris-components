@@ -1,8 +1,13 @@
 /* @import "../../app/design-tokens/primitives.css"; */
 
 .base {
-  position: relative;
+  /* position: relative; */
   margin-bottom: var(--iris-form-gap);
+}
+
+.inputBase {
+  position: relative;
+  /* margin-bottom: var(--iris-form-gap); */
 }
 
 .input {
@@ -55,7 +60,7 @@
 }
 
 .error {
-  margin-bottom: 1rem;
+  margin: var(--iris-form-gap-sm) 0 var(--iris-form-gap) 0;
   color: var(--iris-color-form-text-invalid, #d9230c);
   font-family: var(--iris-font-regular);
   font-size: 0.875rem;
