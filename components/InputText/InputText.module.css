@@ -56,7 +56,7 @@
 }
 
 .error {
-  margin: var(--iris-form-gap-sm) 0 var(--iris-form-gap) 0;
+  margin: var(--iris-form-gap-sm) 0 0 0;
   color: var(--iris-color-form-text-invalid, #d9230c);
   font-family: var(--iris-font-regular);
   font-size: 0.875rem;

@@ -14,3 +14,7 @@
 .base:hover path {
   stroke: var(--iris-color-red-700);
 }
+
+.base path {
+  stroke: var(--iris-color-red-600);
+}

@@ -74,7 +74,11 @@ export default function ShippingAddressForm() {
         validationSchema="country"
         shouldValidate={validateAll}
       />
-      <Checkbox label="Set as default shipping address" />
+      <Checkbox
+        label="Set as default shipping address"
+        validationSchema="shippingAddress"
+        shouldValidate={validateAll}
+      />
       <Button label="Save shipping address" />
     </form>
   );

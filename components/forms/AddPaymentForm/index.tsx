@@ -46,8 +46,11 @@ export default function AddPaymentForm() {
           shouldValidate={validateAll}
         />
       </div>
-      <Checkbox label="Set as default payment method" />
-
+      <Checkbox
+        label="Set as default payment method"
+        validationSchema="paymentMethod"
+        shouldValidate={validateAll}
+      />
       <Button label="Add payment method" isPrimary />
     </form>
   );

@@ -58,3 +58,11 @@ export const zipCodeValidation = z.string().min(1, "Zip code is required");
 export const countryValidation = z.string().min(1, "Country is required");
 
 export const stateValidation = z.string().min(1, "State is required");
+
+export const paymentMethodValidation = z
+  .string()
+  .min(1, "Payment method is required");
+
+export const shippingAddressValidation = z
+  .string()
+  .min(1, "Shipping address is required");
