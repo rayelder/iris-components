@@ -24,7 +24,7 @@ export default function FormElements() {
         <Checkbox label="Label" />
         <h3>InputText</h3>
         <InputText label="Label" value="" />
-        <h3>InputSecurityCode</h3>
+        <h3>InputText with trailing icon</h3>
         <InputText label="Label" value="" showTrailingIcon />
         <h3>RadioGroup - Vertical</h3>
         <RadioGroup label="Label" name="radio-group-v" direction="vertical">

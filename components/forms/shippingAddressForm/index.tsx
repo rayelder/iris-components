@@ -40,13 +40,13 @@ export default function ShippingAddressForm() {
         validationSchema="streetAddress"
         shouldValidate={validateAll}
       />
+      <InputText
+        label="City"
+        value=""
+        validationSchema="city"
+        shouldValidate={validateAll}
+      />
       <div className={styles.row}>
-        <InputText
-          label="City"
-          value=""
-          validationSchema="city"
-          shouldValidate={validateAll}
-        />
         <Select
           label="State"
           value=""
