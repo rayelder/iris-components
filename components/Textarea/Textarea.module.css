@@ -1,18 +1,20 @@
 .base {
-  position: relative;
   margin-bottom: var(--iris-form-gap);
+}
+
+.textareaBase {
+  position: relative;
 }
 
 .textarea {
   width: 100%;
-  min-height: 6rem;
   padding: 1.5rem 0.8125rem 0.5rem 0.875rem;
   border: 1px solid var(--iris-color-form-stroke-enabled);
   border-radius: var(--iris-radius-sm);
   font-family: var(--iris-font-regular);
   font-size: var(--iris-font-size-base);
   transition: border-color 0.2s;
-  resize: vertical;
+  resize: none;
 }
 
 .disabled {
@@ -53,4 +55,32 @@
   font-family: var(--iris-font-medium);
   font-size: var(--iris-font-size-sm);
   color: var(--iris-color-form-text-label);
+}
+
+.error {
+  margin: 4px 0 var(--iris-form-gap) 0;
+  color: var(--iris-color-form-text-invalid, #d9230c);
+  font-family: var(--iris-font-regular);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.textareaError {
+  border-color: var(--iris-color-form-stroke-invalid);
+  color: var(--iris-color-form-text-invalid);
+  background-color: var(--iris-color-form-fill-invalid);
+}
+
+.textareaError:hover {
+  border-color: var(--iris-color-form-stroke-invalid) !important;
+}
+
+.textareaError ~ .label {
+  color: var(--iris-color-form-text-invalid);
+}
+
+.textareaError:focus {
+  outline: 3px solid var(--iris-color-form-stroke-invalid-focus-ring);
+  border-color: var(--iris-color-form-stroke-invalid) !important;
 }

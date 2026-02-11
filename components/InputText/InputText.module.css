@@ -1,13 +1,9 @@
-/* @import "../../app/design-tokens/primitives.css"; */
-
 .base {
-  /* position: relative; */
   margin-bottom: var(--iris-form-gap);
 }
 
 .inputBase {
   position: relative;
-  /* margin-bottom: var(--iris-form-gap); */
 }
 
 .input {

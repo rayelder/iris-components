@@ -25,3 +25,5 @@ export const securityCodeValidation = z
   .min(1, "Security code is required")
   .min(3, "Must be at least 3 digits")
   .max(4, "Must be at most 4 digits");
+
+export const messageValidation = z.string().min(1, "Message is required");

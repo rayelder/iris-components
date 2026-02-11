@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import {
   ccNameValidation,
   ccNumberValidation,
+  emailValidation,
   expirationValidation,
   securityCodeValidation,
 } from "@/lib/schemas/shared";
@@ -49,6 +50,8 @@ export default function InputText({
         return ccNameValidation;
       case "ccNumber":
         return ccNumberValidation;
+      case "email":
+        return emailValidation;
       case "expiration":
         return expirationValidation;
       case "securityCode":
@@ -80,14 +83,10 @@ export default function InputText({
 
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsFocused(false);
-    // console.log("Input value on blur:", e);
 
-    // Validate when user leaves the field
     const result = getValidationSchema(validationSchema)?.safeParse(
       e.target.value,
     );
-
-    // console.log("Result ->", result);
 
     if (result && !result.success) {
       setError(result.error.issues[0].message);
