@@ -23,7 +23,7 @@ export default function EmailUsForm() {
       <InputText
         label="Name"
         value=""
-        validationSchema="ccName"
+        validationSchema="name"
         shouldValidate={validateAll}
       />
       <Select

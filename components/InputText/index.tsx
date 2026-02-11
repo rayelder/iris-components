@@ -6,6 +6,7 @@ import {
   ccNumberValidation,
   emailValidation,
   expirationValidation,
+  nameValidation,
   securityCodeValidation,
 } from "@/lib/schemas/shared";
 
@@ -23,6 +24,7 @@ interface InputTextProps {
     | "ccNumber"
     | "email"
     | "expiration"
+    | "name"
     | "securityCode";
   showTrailingIcon?: boolean;
   shouldValidate?: boolean;
@@ -54,6 +56,8 @@ export default function InputText({
         return emailValidation;
       case "expiration":
         return expirationValidation;
+      case "name":
+        return nameValidation;
       case "securityCode":
         return securityCodeValidation;
       default:

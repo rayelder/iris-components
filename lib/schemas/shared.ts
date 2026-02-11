@@ -20,6 +20,11 @@ export const expirationValidation = z
   .min(1, "Expiration is required")
   .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Enter expiration as MM/YY");
 
+export const nameValidation = z
+  .string()
+  .min(1, "Name is required")
+  .min(2, "Name must be at least 2 characters");
+
 export const securityCodeValidation = z
   .string()
   .min(1, "Security code is required")
