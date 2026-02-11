@@ -6,8 +6,13 @@ import {
   ccNumberValidation,
   emailValidation,
   expirationValidation,
+  firstNameValidation,
+  lastNameValidation,
   nameValidation,
   securityCodeValidation,
+  streetAddressValidation,
+  cityValidation,
+  zipCodeValidation,
 } from "@/lib/schemas/shared";
 
 import Icon from "../Icon";
@@ -20,12 +25,17 @@ interface InputTextProps {
   disabled?: boolean;
   onChange?: (value: string) => void;
   validationSchema?:
+    | "city"
     | "ccName"
     | "ccNumber"
     | "email"
     | "expiration"
     | "name"
-    | "securityCode";
+    | "securityCode"
+    | "firstName"
+    | "lastName"
+    | "streetAddress"
+    | "zipCode";
   showTrailingIcon?: boolean;
   shouldValidate?: boolean;
 }
@@ -58,8 +68,18 @@ export default function InputText({
         return expirationValidation;
       case "name":
         return nameValidation;
+      case "firstName":
+        return firstNameValidation;
+      case "lastName":
+        return lastNameValidation;
       case "securityCode":
         return securityCodeValidation;
+      case "streetAddress":
+        return streetAddressValidation;
+      case "city":
+        return cityValidation;
+      case "zipCode":
+        return zipCodeValidation;
       default:
         return null;
     }

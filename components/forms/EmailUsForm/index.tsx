@@ -34,6 +34,8 @@ export default function EmailUsForm() {
           { value: "sales", label: "Sales" },
           { value: "feedback", label: "Feedback" },
         ]}
+        validationSchema="reasonForContact"
+        shouldValidate={validateAll}
       />
       <InputText
         label="Email"

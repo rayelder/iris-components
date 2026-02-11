@@ -1,6 +1,9 @@
 .base {
-  position: relative;
   margin-bottom: var(--iris-form-gap);
+}
+
+.selectBase {
+  position: relative;
 }
 
 .select {
@@ -115,4 +118,36 @@
   padding: 1rem 1rem;
   color: var(--iris-color-neutral-800);
   background-color: var(--iris-color-neutral-200);
+}
+
+.error {
+  margin: var(--iris-form-gap-sm) 0 var(--iris-form-gap) 0;
+  color: var(--iris-color-form-text-invalid, #d9230c);
+  font-family: var(--iris-font-regular);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.selectError {
+  border-color: var(--iris-color-form-stroke-invalid);
+  color: var(--iris-color-form-text-invalid);
+  background-color: var(--iris-color-form-fill-invalid);
+}
+
+.selectError:hover {
+  border-color: var(--iris-color-form-stroke-invalid) !important;
+}
+
+.selectError ~ .label {
+  color: var(--iris-color-form-text-invalid);
+}
+
+.selectError:focus {
+  outline: 3px solid var(--iris-color-form-stroke-invalid-focus-ring);
+  border-color: var(--iris-color-form-stroke-invalid) !important;
+}
+
+.selectError ~ .arrow svg path {
+  stroke: var(--iris-color-red-600);
 }

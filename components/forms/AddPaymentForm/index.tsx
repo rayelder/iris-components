@@ -4,6 +4,7 @@ import { FormEvent } from "react";
 import { useState } from "react";
 
 import Button from "@/components/Button";
+import Checkbox from "@/components/Checkbox";
 import InputText from "@/components/InputText";
 
 import styles from "@/app/page.module.css";
@@ -45,6 +46,8 @@ export default function AddPaymentForm() {
           shouldValidate={validateAll}
         />
       </div>
+      <Checkbox label="Set as default payment method" />
+
       <Button label="Add payment method" isPrimary />
     </form>
   );
