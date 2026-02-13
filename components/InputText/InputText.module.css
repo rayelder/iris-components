@@ -44,7 +44,11 @@
   font-size: var(--iris-font-size-base);
   color: var(--iris-color-form-text-placeholder);
   pointer-events: none;
-  transition: all 0.2s ease-in-out;
+  transition:
+    top 0.2s ease-in-out,
+    left 0.2s ease-in-out,
+    font-size 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
 .labelFloating {
