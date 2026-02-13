@@ -75,7 +75,9 @@ export default function ShippingAddressForm() {
         shouldValidate={validateAll}
       />
       <Checkbox label="Set as default shipping address" />
-      <Button label="Save shipping address" />
+      <div className={styles.buttonGroup}>
+        <Button label="Save shipping address" />
+      </div>
     </form>
   );
 }

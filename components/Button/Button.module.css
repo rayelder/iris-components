@@ -20,8 +20,8 @@
 }
 
 .base:focus-visible {
-  outline: 3px solid var(--iris-color-orange-300);
-  outline-offset: 0px;
+  outline: 3px solid var(--iris-color-orange-600);
+  outline-offset: 2px;
 }
 
 .rounded {

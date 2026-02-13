@@ -34,7 +34,8 @@ export default function AddPaymentForm() {
       />
       <div className={styles.row}>
         <InputText
-          label="Expiration"
+          type="ccExpiration"
+          label="Expiration (MM/YY)"
           value=""
           validationSchema="expiration"
           shouldValidate={validateAll}
@@ -47,12 +48,10 @@ export default function AddPaymentForm() {
           shouldValidate={validateAll}
         />
       </div>
-      <Checkbox
-        label="Set as default payment method"
-        validationSchema="paymentMethod"
-        shouldValidate={validateAll}
-      />
-      <Button label="Add payment method" isPrimary />
+      <Checkbox label="Set as default payment method" />
+      <div className={styles.buttonGroup}>
+        <Button label="Add payment method" isPrimary />
+      </div>
     </form>
   );
 }

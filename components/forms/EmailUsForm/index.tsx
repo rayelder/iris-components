@@ -50,7 +50,9 @@ export default function EmailUsForm() {
         validationSchema="message"
         shouldValidate={validateAll}
       />
-      <Button label="Send email" />
+      <div className={styles.buttonGroup}>
+        <Button label="Send email" />
+      </div>
     </form>
   );
 }

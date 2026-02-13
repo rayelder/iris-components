@@ -20,7 +20,7 @@ import Icon from "../Icon";
 import styles from "./InputText.module.css";
 
 interface InputTextProps {
-  type?: "text" | "ccNumber";
+  type?: "text" | "ccNumber" | "ccExpiration";
   label: string;
   value: string;
   disabled?: boolean;
@@ -104,11 +104,17 @@ export default function InputText({
   }, [shouldValidate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (type === "ccNumber") {
-      setInputValue(formatCardNumber(e.target.value));
-      setCardType(detectCardType(e.target.value));
-    } else {
-      setInputValue(e.target.value);
+    switch (type) {
+      case "ccNumber":
+        setInputValue(formatCardNumber(e.target.value));
+        setCardType(detectCardType(e.target.value));
+        break;
+      case "ccExpiration":
+        setInputValue(formatExpiry(e.target.value));
+        break;
+      default:
+        setInputValue(e.target.value);
+        break;
     }
     onChange?.(e.target.value);
   };
@@ -126,6 +132,27 @@ export default function InputText({
       setError("");
     }
   };
+
+  function formatExpiry(value: string) {
+    const digits = value.replace(/\D/g, "").slice(0, 4); // MMYY max
+
+    if (digits.length === 0) return "";
+
+    // First 2 digits = month
+    let mm = digits.slice(0, 2);
+
+    // Optional: clamp month while typing
+    if (mm.length === 1 && Number(mm) > 1) {
+      mm = `0${mm}`; // e.g. "9" -> "09"
+    } else if (mm.length === 2) {
+      const n = Number(mm);
+      if (n === 0) mm = "01";
+      else if (n > 12) mm = "12";
+    }
+
+    const yy = digits.slice(2, 4);
+    return yy ? `${mm}/${yy}` : mm;
+  }
 
   return (
     <div className={styles.base}>
