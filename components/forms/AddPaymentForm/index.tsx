@@ -26,6 +26,7 @@ export default function AddPaymentForm() {
         shouldValidate={validateAll}
       />
       <InputText
+        type="ccNumber"
         label="Card number"
         value=""
         validationSchema="ccNumber"

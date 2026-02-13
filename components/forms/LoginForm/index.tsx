@@ -31,7 +31,6 @@ export default function LoginForm() {
       />
       <div className={styles.buttonGroup}>
         <Button label="Log in" isPrimary />
-        <Button label="Create an account" />
       </div>
     </form>
   );

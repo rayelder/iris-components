@@ -8,7 +8,7 @@
 
 .textarea {
   width: 100%;
-  padding: 1.5rem 0.8125rem 0.5rem 0.875rem;
+  padding: 1.625rem 0.8125rem 0.5rem 0.875rem;
   border: 1px solid var(--iris-color-form-stroke-enabled);
   border-radius: var(--iris-radius-sm);
   font-family: var(--iris-font-regular);
@@ -39,7 +39,7 @@
 .label {
   position: absolute;
   left: 0.8125rem;
-  top: 1.75rem;
+  top: 1.625rem;
   transform: translateY(-50%);
   font-family: var(--iris-font-regular);
   font-size: var(--iris-font-size-base);
@@ -49,9 +49,8 @@
 }
 
 .labelFloating {
-  left: 0.9375rem;
-  top: 0.9375rem;
-  /* transform: translateY(0); */
+  left: var(--iris-floating-label-left);
+  top: var(--iris-floating-label-top);
   font-family: var(--iris-font-medium);
   font-size: var(--iris-font-size-sm);
   color: var(--iris-color-form-text-label);

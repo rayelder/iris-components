@@ -65,4 +65,4 @@ export const paymentMethodValidation = z
 
 export const shippingAddressValidation = z
   .string()
-  .min(1, "Shipping address is required");
+  .min(1, "Default shipping consent is required");

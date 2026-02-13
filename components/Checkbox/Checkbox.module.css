@@ -1,5 +1,5 @@
 .base {
-  margin-bottom: var(--iris-form-gap);
+  margin: 0 0 1rem 0;
 }
 
 .inputBase {

@@ -40,7 +40,7 @@ export default function Select({
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const hasValue = selectValue.length > 0;
-  const isLabelFloating = isOpen || hasValue;
+  const isLabelFloating = (!isOpen && hasValue) || (isOpen && hasValue);
 
   const getValidationSchema = (type?: string) => {
     switch (type) {
@@ -100,18 +100,18 @@ export default function Select({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Change event:", e.target.value);
-    const result = getValidationSchema(validationSchema)?.safeParse(
-      e.target.value,
-    );
+  // const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   console.log("Change event:", e.target.value);
+  //   const result = getValidationSchema(validationSchema)?.safeParse(
+  //     e.target.value,
+  //   );
 
-    if (result && !result.success) {
-      setError(result.error.issues[0].message);
-    } else {
-      setError("");
-    }
-  };
+  //   if (result && !result.success) {
+  //     setError(result.error.issues[0].message);
+  //   } else {
+  //     setError("");
+  //   }
+  // };
 
   return (
     <div className={styles.base}>

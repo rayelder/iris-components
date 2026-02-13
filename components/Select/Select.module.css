@@ -7,9 +7,10 @@
 }
 
 .select {
+  display: flex;
   width: 100%;
   height: 3.5rem;
-  padding: 1.5rem 2.5rem 0.5rem 0.875rem;
+  padding: 1.625rem 2.5rem 0.5rem 0.875rem;
   border: 1px solid var(--iris-color-form-stroke-enabled);
   border-radius: var(--iris-radius-sm);
   font-family: var(--iris-font-regular);
@@ -17,8 +18,6 @@
   transition: border-color 0.2s;
   background-color: var(--iris-color-white);
   cursor: pointer;
-  display: flex;
-  align-items: center;
 }
 
 .select:focus {
@@ -53,13 +52,12 @@
   font-size: var(--iris-font-size-base);
   color: var(--iris-color-form-text-placeholder);
   pointer-events: none;
-  transition: all 0.2s ease-in-out;
+  /* transition: all 0.2s ease-in-out; */
 }
 
 .labelFloating {
-  left: 0.9375rem;
-  top: 0.9375rem;
-  /* transform: translateY(0); */
+  left: var(--iris-floating-label-left);
+  top: var(--iris-floating-label-top);
   font-family: var(--iris-font-medium);
   font-size: var(--iris-font-size-sm);
   color: var(--iris-color-form-text-label);
@@ -67,9 +65,9 @@
 
 .arrow {
   position: absolute;
-  right: 0.875rem;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 1rem;
+  top: 55%;
+  transform: translateY(-55%);
   pointer-events: none;
   color: var(--iris-color-form-text-placeholder);
   transition: transform 0.2s;
@@ -121,7 +119,7 @@
 }
 
 .error {
-  margin: var(--iris-form-gap-sm) 0 var(--iris-form-gap) 0;
+  margin: var(--iris-form-gap-sm) 0 0 0;
   color: var(--iris-color-form-text-invalid, #d9230c);
   font-family: var(--iris-font-regular);
   font-size: 0.875rem;
