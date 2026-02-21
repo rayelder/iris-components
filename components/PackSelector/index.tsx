@@ -9,6 +9,8 @@ type QuantitySelectorProps = {
   supply?: number;
   retailPrice?: number;
   discountedPrice?: number;
+  onSelect?: () => void;
+  isSelected?: boolean;
 };
 
 export default function PackSelector({
@@ -16,11 +18,14 @@ export default function PackSelector({
   supply = 6,
   retailPrice = 94.99,
   discountedPrice = 75.99,
+  onSelect = () => {},
+  isSelected = false,
 }: QuantitySelectorProps) {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelectedState, setIsSelectedState] = useState(false);
 
   const toggleSelected = () => {
-    setIsSelected((previousSelected) => !previousSelected);
+    setIsSelectedState((previousSelected) => !previousSelected);
+    onSelect();
   };
   return (
     <div

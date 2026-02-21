@@ -1,0 +1,19 @@
+.base {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 0 1rem 0;
+}
+
+.base > * {
+  flex: 1;
+}
+
+.heading {
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-md);
+  font-weight: 500;
+  color: var(--iris-color-indigo-700);
+  margin-bottom: 1rem;
+}

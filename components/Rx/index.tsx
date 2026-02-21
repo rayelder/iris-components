@@ -10,13 +10,16 @@ import PackSelector from "../PackSelector";
 
 import styles from "./Rx.module.css";
 import StandaloneLink from "../StandaloneLink";
+import PackSelectors from "../PackSelectors";
 
 export default function Rx({
   setBoxCountA,
   setBoxCountB,
+  setPricePerBox,
 }: {
   setBoxCountA: React.Dispatch<React.SetStateAction<number>>;
   setBoxCountB: React.Dispatch<React.SetStateAction<number>>;
+  setPricePerBox: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -93,21 +96,9 @@ export default function Rx({
           </table>
         )}
       </div>
-      <p className={styles.heading}>Select pack size</p>
-      <div className={styles.quantity}>
-        <PackSelector
-          quantity={30}
-          supply={1}
-          retailPrice={56.99}
-          discountedPrice={56.99}
-        />
-        <PackSelector
-          quantity={90}
-          supply={3}
-          retailPrice={134.99}
-          discountedPrice={134.99}
-        />
-      </div>
+
+      <PackSelectors setBoxPrice={setPricePerBox} />
+
       <p className={styles.heading}>Select quantity</p>
       <div className={styles.quantity}>
         <QuantitySelector
