@@ -7,6 +7,12 @@ import OrderSummary from "@/components/OrderSummary";
 import Rx from "@/components/Rx";
 
 import style from "./page.module.css";
+import Button from "@/components/Button";
+import InputText from "@/components/InputText";
+import DiscountCode from "@/components/DiscountCode";
+import InfoDisplay from "@/components/InfoDisplay";
+import InfoDisplayAddress from "@/components/InfoDisplayAddress";
+import ShippingSpeed from "@/components/ShippingSpeed";
 
 export default function ExpressCheckout() {
   const [boxCountA, setBoxCountA] = useState(1);
@@ -30,6 +36,34 @@ export default function ExpressCheckout() {
             setBoxCountB={setBoxCountB}
             setPricePerBox={setPricePerBox}
           />
+        </div>
+        <div className={style.paddedWhite}>
+          <InfoDisplay heading="Eye care provider">
+            South Valley Optical
+          </InfoDisplay>
+          <InfoDisplayAddress heading="Shipping address">
+            <p>
+              Edward Nygma
+              <br />
+              261 W Data Dr
+              <br />
+              Draper, UT
+              <br />
+              84101
+            </p>
+          </InfoDisplayAddress>
+          <ShippingSpeed heading="Shipping speed">
+            <p>Standard</p>
+          </ShippingSpeed>
+          <InfoDisplayAddress heading="Payment method">
+            <div>
+              <p>Visa</p>
+              <p>5111 1111 1111 1118</p>
+              <p>Expired 12/2026</p>
+            </div>
+          </InfoDisplayAddress>
+          <DiscountCode />
+          <Button label={`Pay $${subtotal.toFixed(2)}`} isPrimary />
         </div>
       </div>
     </div>

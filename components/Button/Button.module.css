@@ -1,5 +1,8 @@
 .base {
-  width: 100%;
+  flex: 0 0 auto; /* don’t grow, don’t shrink weirdly */
+  align-self: flex-start; /* optional: avoid cross-axis stretch */
+  margin: 0;
+  padding: 0 2rem;
   height: 3.5rem;
   font-family: var(--iris-font-medium);
   font-size: var(--iris-font-size-lg);
@@ -11,7 +14,7 @@
   transition: background-color 0.2s;
 }
 
-.base:hover {
+.base:not(:disabled):hover {
   background-color: var(--iris-color-orange-700);
 }
 
@@ -25,12 +28,10 @@
 }
 
 .rounded {
-  /* composes: base; */
   border-radius: var(--iris-radius-sm);
 }
 
 .pill {
-  /* composes: base; */
   border-radius: var(--iris-radius-pill);
 }
 
@@ -58,4 +59,17 @@
 .secondary:focus-visible {
   outline: 3px solid var(--iris-color-indigo-300);
   outline-offset: 0px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  color: var(--iris-color-neutral-800);
+  border-color: var(--iris-color-neutral-300);
+  border-radius: var(--iris-radius-pill);
+  background: var(--iris-color-neutral-300);
+}
+
+button:disabled:hover {
+  transform: none;
+  box-shadow: none;
 }

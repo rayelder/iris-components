@@ -26,7 +26,12 @@ export default function Rx({
   const [boxA, setBoxA] = useState(1);
   const [boxB, setBoxB] = useState(1);
 
-  // const boxCount = boxA + boxB;
+  const handleContinue = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className={styles.base}>
@@ -116,7 +121,7 @@ export default function Rx({
           }}
         />
       </div>
-      <Button label="Continue" isPrimary />
+      <Button label="Continue" isPrimary onClick={handleContinue} />
     </div>
   );
 }

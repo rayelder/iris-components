@@ -1,5 +1,5 @@
 .base {
-  margin-bottom: var(--iris-form-gap);
+  margin-bottom: 0;
 }
 
 .label {

@@ -1,0 +1,18 @@
+.base {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* .base > * {
+  flex: 1;
+} */
+
+.heading {
+  margin: 0;
+  padding: 0;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-md);
+  font-style: normal;
+  font-weight: 500;
+  color: var(--Secondary-Text-blue, #2b3e58);
+}

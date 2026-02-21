@@ -13,6 +13,14 @@
   padding: 0 1rem 1rem 1rem;
 }
 
+.paddedWhite {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
+  background-color: white;
+}
+
 .padded h1 {
   margin: 0;
   padding: 0 0 0 0.5rem;
