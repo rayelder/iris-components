@@ -1,0 +1,65 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--iris-color-neutral-400);
+  border-radius: var(--iris-radius-sm);
+
+  padding: 1rem;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-lg);
+  font-weight: 500;
+}
+
+.base:hover {
+  cursor: pointer;
+}
+
+.selected {
+  composes: base;
+  border-color: var(--iris-color-indigo-400);
+  background-color: var(--iris-color-indigo-100);
+}
+
+.pack {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-lg);
+  color: var(--iris-color-neutral-800);
+  /* border-top: 1px solid var(--iris-color-neutral-300); */
+}
+
+.prices {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  margin: 0;
+  padding: 0;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-lg);
+  color: var(--iris-color-neutral-wcag45);
+}
+
+.retailPrice {
+  composes: price;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 2px;
+  color: var(--iris-color-neutral-wcag45);
+}
+
+.discountedPrice {
+  composes: price;
+  color: var(--iris-color-green-600);
+}
+
+.supplyLength {
+  margin: 1rem 0 0 0;
+  padding: 0.5rem 0 0 0;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-sm);
+  color: var(--iris-color-neutral-wcag45);
+  border-top: 1px solid var(--iris-color-neutral-300);
+}

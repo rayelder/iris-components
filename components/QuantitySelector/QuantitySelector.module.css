@@ -1,0 +1,22 @@
+.base {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--iris-color-neutral-300);
+  border-radius: var(--iris-radius-pill);
+  padding: 0 0.5rem;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-lg);
+  font-weight: 500;
+  height: 3rem;
+}
+
+.controlButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

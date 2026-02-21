@@ -1,5 +1,6 @@
 import Masthead from "@/components/Masthead";
 import OrderSummary from "@/components/OrderSummary";
+import Rx from "@/components/Rx";
 
 import style from "./page.module.css";
 
@@ -11,6 +12,7 @@ export default function ExpressCheckout() {
         <div className={style.padded}>
           <h1>Express checkout</h1>
           <OrderSummary />
+          <Rx />
         </div>
       </div>
     </div>

@@ -1,0 +1,13 @@
+.base {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--iris-font-medium);
+  font-weight: 500;
+  font-size: var(--iris-font-size-sm);
+  color: var(--iris-color-neutral-wcag45);
+}
+
+.base:hover {
+  cursor: pointer;
+}
