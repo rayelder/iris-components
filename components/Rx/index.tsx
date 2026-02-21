@@ -23,7 +23,7 @@ export default function Rx({
   const [boxA, setBoxA] = useState(1);
   const [boxB, setBoxB] = useState(1);
 
-  const boxCount = boxA + boxB; // total from both selectors
+  // const boxCount = boxA + boxB;
 
   return (
     <div className={styles.base}>
@@ -37,9 +37,9 @@ export default function Rx({
             width={96}
             height={96}
           />
-          <p>Right eye (OD)</p>
+          {/* <p>Right eye (OD)</p> */}
         </div>
-        <div className={styles.eye}>
+        {/* <div className={styles.eye}>
           <Image
             src="/images/ProductImage.png"
             alt="Prescription details"
@@ -47,7 +47,7 @@ export default function Rx({
             height={96}
           />
           <p>Left eye (OS)</p>
-        </div>
+        </div> */}
       </div>
       <div className={styles.toggleDetails}>
         <div className={styles.toggleDetailsCentered}>
@@ -58,6 +58,12 @@ export default function Rx({
 
         {showDetails && (
           <table className={styles.details}>
+            <thead>
+              <tr>
+                <th>Right eye (OD)</th>
+                <th>Left eye (OS)</th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
                 <th>Power/sphere</th>
@@ -89,12 +95,17 @@ export default function Rx({
       </div>
       <p className={styles.heading}>Select pack size</p>
       <div className={styles.quantity}>
-        <PackSelector />
         <PackSelector
-          quantity={24}
-          supply={12}
-          retailPrice={99.99}
-          discountedPrice={79.99}
+          quantity={30}
+          supply={1}
+          retailPrice={56.99}
+          discountedPrice={56.99}
+        />
+        <PackSelector
+          quantity={90}
+          supply={3}
+          retailPrice={134.99}
+          discountedPrice={134.99}
         />
       </div>
       <p className={styles.heading}>Select quantity</p>

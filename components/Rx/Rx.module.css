@@ -8,7 +8,7 @@
   display: flex;
   gap: 4rem;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 1rem 0 0.5rem 0;
   padding: 0;
 }
 
@@ -65,6 +65,11 @@
   border-collapse: collapse;
 }
 
+.details thead tr th {
+  padding: 0 0 1rem 0;
+  /* background-color: tomato; */
+  color: var(--iris-color-neutral-800);
+}
 .details th {
   font-family: var(--iris-font-medium);
   font-size: var(--iris-font-size-sm);

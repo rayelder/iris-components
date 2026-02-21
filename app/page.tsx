@@ -13,6 +13,14 @@ export default function Home() {
     <>
       <Nav />
       <div className={styles.page}>
+        <h1>Prototypes</h1>
+        <ul>
+          <li>
+            <Link href="/express-checkout">Express checkout</Link>
+          </li>
+        </ul>
+      </div>
+      <div className={styles.page}>
         <h1>Forms</h1>
         <ul>
           <li>

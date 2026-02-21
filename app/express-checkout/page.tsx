@@ -12,7 +12,7 @@ export default function ExpressCheckout() {
   const [boxCountA, setBoxCountA] = useState(1);
   const [boxCountB, setBoxCountB] = useState(1);
   var boxCount = boxCountA + boxCountB;
-  var pricePerBox = 74.99;
+  var pricePerBox = 56.99;
   var subtotal = pricePerBox * boxCount;
 
   return (

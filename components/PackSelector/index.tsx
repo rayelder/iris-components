@@ -31,7 +31,7 @@ export default function PackSelector({
         <p className={styles.pack}>{quantity} pack</p>
         <p className={styles.prices}>
           <span className={styles.discountedPrice}>${discountedPrice}</span>
-          <span className={styles.retailPrice}>${retailPrice}</span>
+          {/* <span className={styles.retailPrice}>${retailPrice}</span> */}
         </p>
         <p className={styles.supplyLength}>{supply}-month supply</p>
       </div>
