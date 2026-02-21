@@ -20,6 +20,13 @@
   font-size: 1.5rem;
 }
 
+.count {
+  margin: 0;
+  padding: 0 0 0 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
 .mobile {
   width: 375px;
   margin: 0 auto;

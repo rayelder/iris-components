@@ -4,8 +4,20 @@ import { useState } from "react";
 
 import styles from "./OrderSummary.module.css";
 
-export default function OrderSummary() {
+type OrderSummaryProps = {
+  subtotal: number;
+  shipping: number;
+};
+
+export default function OrderSummary({
+  subtotal = 0,
+  shipping = 0,
+}: OrderSummaryProps) {
   var [isExpanded, setIsExpanded] = useState(false);
+
+  const taxRate = 0.087;
+  const taxes = subtotal * taxRate;
+  const total = subtotal + shipping + taxes;
 
   function handleTap() {
     setIsExpanded(!isExpanded);
@@ -50,7 +62,9 @@ export default function OrderSummary() {
             </svg>
           )}
         </div>
-        {!isExpanded && <div className={styles.rightColumn}>$999.99</div>}
+        {!isExpanded && (
+          <div className={styles.rightColumn}>${total.toFixed(2)}</div>
+        )}
       </div>
 
       <div
@@ -63,19 +77,19 @@ export default function OrderSummary() {
             <tbody>
               <tr>
                 <th>Subtotal:</th>
-                <td>$970.01</td>
+                <td>${subtotal.toFixed(2)}</td>
               </tr>
               <tr>
                 <th>Shipping:</th>
-                <td>$19.99</td>
+                <td>${shipping.toFixed(2)}</td>
               </tr>
               <tr>
                 <th>Taxes:</th>
-                <td>$9.99</td>
+                <td>${taxes.toFixed(2)}</td>
               </tr>
               <tr className={styles.total}>
                 <th>Total:</th>
-                <td>$999.99</td>
+                <td>${total.toFixed(2)}</td>
               </tr>
             </tbody>
           </table>

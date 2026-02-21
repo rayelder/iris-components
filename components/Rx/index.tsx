@@ -11,8 +11,20 @@ import PackSelector from "../PackSelector";
 import styles from "./Rx.module.css";
 import StandaloneLink from "../StandaloneLink";
 
-export default function Rx() {
+export default function Rx({
+  setBoxCountA,
+  setBoxCountB,
+}: {
+  setBoxCountA: React.Dispatch<React.SetStateAction<number>>;
+  setBoxCountB: React.Dispatch<React.SetStateAction<number>>;
+}) {
   const [showDetails, setShowDetails] = useState(false);
+
+  const [boxA, setBoxA] = useState(1);
+  const [boxB, setBoxB] = useState(1);
+
+  const boxCount = boxA + boxB; // total from both selectors
+
   return (
     <div className={styles.base}>
       <p className={styles.title}>Nick's prescription</p>
@@ -87,8 +99,20 @@ export default function Rx() {
       </div>
       <p className={styles.heading}>Select quantity</p>
       <div className={styles.quantity}>
-        <QuantitySelector />
-        <QuantitySelector />
+        <QuantitySelector
+          quantity={boxA}
+          onChange={(value) => {
+            setBoxA(value);
+            setBoxCountA(value);
+          }}
+        />
+        <QuantitySelector
+          quantity={boxB}
+          onChange={(value) => {
+            setBoxB(value);
+            setBoxCountB(value);
+          }}
+        />
       </div>
       <Button label="Continue" isPrimary />
     </div>

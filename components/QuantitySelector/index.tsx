@@ -1,22 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./QuantitySelector.module.css";
 
-export default function QuantitySelector() {
-  const [quantity, setQuantity] = useState(1);
+type QuantitySelectorProps = {
+  quantity: number;
+  onChange: (next: number) => void;
+};
+
+export default function QuantitySelector({
+  quantity,
+  onChange,
+}: QuantitySelectorProps) {
+  //   const [quantity, setQuantity] = useState(1);
 
   const clamp = (value: number, min = 0, max = 4) =>
     Math.min(max, Math.max(min, value));
 
-  const decrementQuantity = () => {
-    setQuantity((previousQuantity) => clamp(previousQuantity - 1));
-  };
-
-  const incrementQuantity = () => {
-    setQuantity((previousQuantity) => clamp(previousQuantity + 1));
-  };
+  const decrementQuantity = () => onChange(clamp(quantity - 1));
+  const incrementQuantity = () => onChange(clamp(quantity + 1));
 
   return (
     <div className={styles.base}>
