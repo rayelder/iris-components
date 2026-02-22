@@ -1,0 +1,18 @@
+.base {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--iris-color-white);
+  border: none;
+  border-radius: var(--iris-radius-sm);
+  transition: all 0.3s;
+}
+
+.base:hover {
+  background-color: var(--iris-color-indigo-200);
+  color: var(--iris-color-orange-600);
+  cursor: pointer;
+}
+
+.base:hover svg g path {
+  stroke: var(--iris-color-indigo-700);
+}
