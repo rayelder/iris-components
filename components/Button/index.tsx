@@ -4,6 +4,7 @@ type ButtonProps = {
   label: string;
   isPill?: boolean;
   isPrimary?: boolean;
+  isFullWidth?: boolean;
   isDisabled?: boolean;
   onClick?: () => void;
 };
@@ -13,11 +14,12 @@ export default function Button({
   isPill = true,
   isPrimary = false,
   isDisabled = false,
+  isFullWidth = false,
   onClick = () => {},
 }: ButtonProps) {
   return (
     <button
-      className={`${isPill ? styles.pill : styles.rounded} ${isPrimary ? styles.primary : styles.secondary}`}
+      className={`${isPill ? styles.pill : styles.rounded} ${isPrimary ? styles.primary : styles.secondary} ${isFullWidth ? styles.fullWidth : ""}`}
       type="submit"
       onClick={onClick}
       tabIndex={0}

@@ -58,12 +58,12 @@ export default function ExpressCheckout() {
           <InfoDisplayAddress heading="Payment method">
             <div>
               <p>Visa</p>
-              <p>5111 1111 1111 1118</p>
+              <p>•••• •••• •••• 1118</p>
               <p>Expired 12/2026</p>
             </div>
           </InfoDisplayAddress>
           <DiscountCode />
-          <Button label={`Pay $${subtotal.toFixed(2)}`} isPrimary />
+          <Button label={`Pay $${subtotal.toFixed(2)}`} isPrimary isFullWidth />
         </div>
       </div>
     </div>

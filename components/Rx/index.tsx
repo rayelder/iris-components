@@ -121,7 +121,7 @@ export default function Rx({
           }}
         />
       </div>
-      <Button label="Continue" isPrimary onClick={handleContinue} />
+      <Button label="Continue" isPrimary isFullWidth onClick={handleContinue} />
     </div>
   );
 }

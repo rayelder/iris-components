@@ -4,6 +4,7 @@ import styles from "./Radio.module.css";
 
 interface RadioProps {
   label: string;
+  tag: string;
   name?: string;
   value: string;
   checked?: boolean;
@@ -13,6 +14,7 @@ interface RadioProps {
 
 export default function Radio({
   label,
+  tag,
   name,
   value,
   checked = false,
@@ -36,6 +38,11 @@ export default function Radio({
       />
       <span className={styles.radio}></span>
       <span className={styles.label}>{label}</span>
+      <span
+        className={`${styles.label} ${styles.right} ${tag === "FREE" ? styles.free : ""}`}
+      >
+        {tag}
+      </span>
     </label>
   );
 }

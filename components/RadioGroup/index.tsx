@@ -27,7 +27,16 @@ export default function RadioGroup({
   defaultValue = "",
   onChange,
 }: RadioGroupProps) {
-  const [selectedValue, setSelectedValue] = useState(defaultValue);
+  const firstChildValue = (() => {
+    const first = Children.toArray(children).find(isValidElement) as
+      | ReactElement<any>
+      | undefined;
+    return (first?.props as any)?.value ?? "";
+  })();
+
+  const [selectedValue, setSelectedValue] = useState(
+    defaultValue || firstChildValue,
+  );
 
   const handleChange = (value: string) => {
     setSelectedValue(value);
