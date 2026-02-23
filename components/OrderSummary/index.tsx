@@ -1,23 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./OrderSummary.module.css";
 
 type OrderSummaryProps = {
   subtotal: number;
   shipping: number;
+  onTotalChange?: (total: number) => void;
 };
 
 export default function OrderSummary({
   subtotal = 0,
   shipping = 0,
+  onTotalChange,
 }: OrderSummaryProps) {
   var [isExpanded, setIsExpanded] = useState(false);
 
   const taxRate = 0.087;
   const taxes = subtotal * taxRate;
   const total = subtotal + shipping + taxes;
+
+  useEffect(() => {
+    onTotalChange?.(total);
+  }, [total, onTotalChange]);
 
   function handleTap() {
     setIsExpanded(!isExpanded);

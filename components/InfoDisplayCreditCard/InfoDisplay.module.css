@@ -26,4 +26,5 @@
   font-size: var(--iris-font-size-md);
   font-style: normal;
   font-weight: 400;
+  line-height: 150%;
 }

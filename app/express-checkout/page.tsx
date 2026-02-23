@@ -15,6 +15,8 @@ import InfoDisplayAddress from "@/components/InfoDisplayAddress";
 import ShippingSpeed from "@/components/ShippingSpeed";
 
 export default function ExpressCheckout() {
+  const [orderTotal, setOrderTotal] = useState(0);
+
   const [boxCountA, setBoxCountA] = useState(1);
   const [boxCountB, setBoxCountB] = useState(1);
   const [pricePerBox, setPricePerBox] = useState(39.99);
@@ -30,6 +32,7 @@ export default function ExpressCheckout() {
           <OrderSummary
             subtotal={subtotal}
             shipping={boxCount === 0 ? 0 : 19.99}
+            onTotalChange={setOrderTotal}
           />
           <Rx
             setBoxCountA={setBoxCountA}
@@ -63,7 +66,11 @@ export default function ExpressCheckout() {
             </div>
           </InfoDisplayAddress>
           <DiscountCode />
-          <Button label={`Pay $${subtotal.toFixed(2)}`} isPrimary isFullWidth />
+          <Button
+            label={`Pay $${orderTotal.toFixed(2)}`}
+            isPrimary
+            isFullWidth
+          />
         </div>
       </div>
     </div>
