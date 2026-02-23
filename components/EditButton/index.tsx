@@ -1,6 +1,6 @@
 import styles from "./EditButton.module.css";
 
-export default function EditButton({ onClick }: { onClick: () => void }) {
+export default function EditButton({ onClick }: { onClick?: () => void }) {
   return (
     <button
       className={styles.base}
