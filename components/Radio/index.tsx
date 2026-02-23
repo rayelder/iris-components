@@ -4,7 +4,7 @@ import styles from "./Radio.module.css";
 
 interface RadioProps {
   label: string;
-  tag: string;
+  tag?: string;
   name?: string;
   value: string;
   checked?: boolean;
