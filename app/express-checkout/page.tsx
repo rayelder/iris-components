@@ -23,7 +23,6 @@ export default function ExpressCheckout() {
   const [showOverlay, setShowOverlay] = useState(false);
   const [form, setForm] = useState("shippingAddress");
   const [orderTotal, setOrderTotal] = useState(0);
-
   const [boxCountA, setBoxCountA] = useState(1);
   const [boxCountB, setBoxCountB] = useState(1);
   const [pricePerBox, setPricePerBox] = useState(39.99);
