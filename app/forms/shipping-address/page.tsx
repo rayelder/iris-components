@@ -7,13 +7,15 @@ export const metadata: Metadata = {
 import Nav from "@/components/Nav";
 import ShippingAddressForm from "@/components/forms/shippingAddressForm";
 
-// import styles from "../../page.module.css";
+import style from "../forms.module.css";
 
 export default function ShippingAddress() {
   return (
     <>
       <Nav />
-      <ShippingAddressForm />
+      <div className={style.form}>
+        <ShippingAddressForm />
+      </div>
     </>
   );
 }

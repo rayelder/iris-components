@@ -1,0 +1,9 @@
+.form,
+.page {
+  margin: 3rem auto;
+  padding: 2rem;
+  width: calc(375px + 2rem);
+  background-color: var(--iris-color-white);
+  border-radius: var(--iris-radius-xl);
+  box-shadow: 0 8px 16px var(--iris-color-neutral-300);
+}
