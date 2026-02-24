@@ -15,9 +15,13 @@ import InfoDisplayAddress from "@/components/InfoDisplayAddress";
 import ShippingSpeed from "@/components/ShippingSpeed";
 import Overlay from "@/components/Overlay";
 import ShippingAddressForm from "@/components/forms/shippingAddressForm";
+import AddPaymentForm from "@/components/forms/AddPaymentForm";
+import EyeCareProviderSearchForm from "@/components/forms/EyeCareProviderSearchForm";
+import IconButton from "@/components/IconButton";
 
 export default function ExpressCheckout() {
   const [showOverlay, setShowOverlay] = useState(false);
+  const [form, setForm] = useState("shippingAddress");
   const [orderTotal, setOrderTotal] = useState(0);
 
   const [boxCountA, setBoxCountA] = useState(1);
@@ -26,12 +30,39 @@ export default function ExpressCheckout() {
   var boxCount = boxCountA + boxCountB;
   var subtotal = pricePerBox * boxCount;
 
+  const renderForm = () => {
+    switch (form) {
+      case "shippingAddress":
+        return <ShippingAddressForm />;
+      case "paymentMethod":
+        return <AddPaymentForm />;
+      case "eyeCareProvider":
+        return <EyeCareProviderSearchForm />;
+      default:
+        return null;
+    }
+  };
+
+  function handleEditClick(formType: string) {
+    setForm(formType);
+    setShowOverlay(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <div className={style.mobile}>
       <div className={style.desktop}>
         {showOverlay && (
           <div className={style.form}>
-            <ShippingAddressForm />
+            <div className={style.masthead}>
+              <h1 className={style.heading}>
+                {form === "shippingAddress" && "Edit shipping address"}
+                {form === "paymentMethod" && "Edit payment method"}
+                {form === "eyeCareProvider" && "Find your eye care provider"}
+              </h1>
+              <IconButton onClick={() => setShowOverlay(false)} icon="xmark" />
+            </div>
+            {renderForm()}
           </div>
         )}
         {showOverlay && <Overlay onClick={() => setShowOverlay(false)} />}
@@ -52,13 +83,13 @@ export default function ExpressCheckout() {
         <div className={style.paddedWhite}>
           <InfoDisplay
             heading="Eye care provider"
-            onEditClick={() => setShowOverlay(true)}
+            onEditClick={() => handleEditClick("eyeCareProvider")}
           >
             South Valley Optical
           </InfoDisplay>
           <InfoDisplayAddress
             heading="Shipping address"
-            onEditClick={() => setShowOverlay(true)}
+            onEditClick={() => handleEditClick("shippingAddress")}
           >
             <p>
               Edward Nygma
@@ -75,7 +106,7 @@ export default function ExpressCheckout() {
           </ShippingSpeed>
           <InfoDisplayAddress
             heading="Payment method"
-            onEditClick={() => setShowOverlay(true)}
+            onEditClick={() => handleEditClick("paymentMethod")}
           >
             <div>
               <p>Visa</p>

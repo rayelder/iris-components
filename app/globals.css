@@ -86,7 +86,7 @@ a {
   text-decoration-thickness: 10%;
   text-underline-offset: 30%;
   text-underline-position: from-font;
-  text-decoration-color: var(--iris-color-indigo-500);
+  text-decoration-color: var(--iris-color-indigo-600);
 }
 
 a:hover {

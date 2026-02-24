@@ -30,7 +30,7 @@ export default function LoginForm() {
         validationSchema="email"
       />
       <div className={styles.buttonGroup}>
-        <Button label="Log in" isPrimary />
+        <Button label="Log in" isPrimary isFullWidth />
       </div>
     </form>
   );

@@ -40,15 +40,30 @@
 }
 
 .secondary {
-  composes: base;
+  flex: 0 0 auto; /* don’t grow, don’t shrink weirdly */
+  align-self: flex-start; /* optional: avoid cross-axis stretch */
+  margin: 0;
+  padding: 0 2rem;
+  height: 3.5rem;
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-lg);
+  color: var(--iris-color-white);
+  border-radius: var(--iris-radius-pill);
+  /* background-color: var(--iris-color-orange-600); */
+  cursor: pointer;
+  border: none;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
   color: var(--iris-color-indigo-600);
-  background: transparent;
+  background-color: white;
   border: 2px solid var(--iris-color-indigo-600);
 }
 
 .secondary:hover {
   color: var(--iris-color-indigo-700);
-  background: transparent;
+  background-color: var(--iris-color-indigo-100);
   border: 2px solid var(--iris-color-indigo-700);
 }
 

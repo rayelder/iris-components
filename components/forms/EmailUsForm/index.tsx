@@ -51,7 +51,7 @@ export default function EmailUsForm() {
         shouldValidate={validateAll}
       />
       <div className={styles.buttonGroup}>
-        <Button label="Send email" />
+        <Button label="Send email" isFullWidth />
       </div>
     </form>
   );

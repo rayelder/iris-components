@@ -17,8 +17,7 @@ export default function AddPaymentForm() {
     setValidateAll(true);
   };
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h1>Add payment method</h1>
+    <form onSubmit={handleSubmit}>
       <InputText
         label="Card holder name"
         value=""
@@ -50,7 +49,7 @@ export default function AddPaymentForm() {
       </div>
       <Checkbox label="Set as default payment method" />
       <div className={styles.buttonGroup}>
-        <Button label="Add payment method" isPrimary />
+        <Button label="Add payment method" isPrimary isFullWidth />
       </div>
     </form>
   );

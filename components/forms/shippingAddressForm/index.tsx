@@ -18,8 +18,7 @@ export default function ShippingAddressForm() {
     setValidateAll(true);
   };
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <h1>Edit shipping address</h1>
+    <form onSubmit={handleSubmit}>
       <div className={styles.row}>
         <InputText
           label="First name"
@@ -76,7 +75,7 @@ export default function ShippingAddressForm() {
       />
       <Checkbox label="Set as default shipping address" />
       <div className={styles.buttonGroup}>
-        <Button label="Save shipping address" />
+        <Button label="Save shipping address" isFullWidth />
       </div>
     </form>
   );
