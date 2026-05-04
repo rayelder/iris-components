@@ -35,6 +35,9 @@ export default function Home() {
           <li>
             <Link href="/forms/shipping-address">Shipping address</Link>
           </li>
+          <li>
+            <Link href="/forms/dob">Date of birth</Link>
+          </li>
         </ul>
       </div>
       <div className={styles.page}>
