@@ -175,15 +175,35 @@
   border-color: var(--iris-color-form-stroke-invalid) !important;
 }
 
-.icon {
+.clearButton {
   position: absolute;
   right: 1rem;
-  top: 60%;
-  transform: translateY(-60%);
-  z-index: 2;
-  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--iris-color-neutral-wcag3);
+  transition: background-color 0.2s;
 }
 
-.inputBaseInvalid .icon svg path {
-  fill: var(--iris-color-red-600) !important;
+.clearButton:hover:not(:disabled) {
+  background-color: var(--iris-color-neutral-700);
+}
+
+.inputBaseInvalid .clearButton {
+  background-color: var(--iris-color-red-600);
+}
+
+.inputBaseInvalid .clearButton:hover:not(:disabled) {
+  background-color: var(--iris-color-red-700);
 }
