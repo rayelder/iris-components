@@ -16,10 +16,10 @@ export default function DateOfBirthForm() {
     setValidateAll(true);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form autoComplete="off" onSubmit={handleSubmit}>
       <InputDate label="Date of birth" value="" shouldValidate={validateAll} />
       <div className={styles.buttonGroup}>
-        <Button label="Continue" isPrimary isFullWidth />
+        <Button label="Save date of birth" isPrimary isFullWidth />
       </div>
     </form>
   );

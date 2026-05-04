@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
-import { dateOfBirthValidation } from "@/lib/schemas/shared";
+import { inputDateValidation } from "@/lib/schemas/shared";
 
-import styles from "../InputText/InputText.module.css";
+import styles from "./InputDate.module.css";
+
+const SEP = "/";
 
 interface InputDateProps {
   label: string;
@@ -12,16 +14,84 @@ interface InputDateProps {
   disabled?: boolean;
   onChange?: (value: string) => void;
   shouldValidate?: boolean;
-  showTrailingIcon?: boolean;
 }
 
-function formatMMDDYYYY(raw: string) {
-  const digits = raw.replace(/\D/g, "").slice(0, 8);
-  if (digits.length <= 2) return digits;
-  if (digits.length <= 4) {
-    return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+function digitsOnly(s: string) {
+  return s.replace(/\D/g, "").slice(0, 8);
+}
+
+function digitsToFilled(digits: string): string {
+  const d = digits.slice(0, 8);
+  if (!d.length) return "";
+  const mm = d.slice(0, Math.min(2, d.length));
+  if (d.length <= 2) return mm;
+  const ddPart = d.slice(2);
+  const dd = ddPart.slice(0, Math.min(2, ddPart.length));
+  const mid = `${mm}${SEP}${dd}`;
+  if (d.length <= 4) return mid;
+  const yyyy = d.slice(4);
+  return `${mid}${SEP}${yyyy}`;
+}
+
+function maskSuffix(digitCount: number): string {
+  switch (digitCount) {
+    case 0:
+      return "MM/DD/YYYY";
+    case 1:
+      return "M/DD/YYYY";
+    case 2:
+      return "/DD/YYYY";
+    case 3:
+      return "D/YYYY";
+    case 4:
+      return "/YYYY";
+    case 5:
+      return "YYY";
+    case 6:
+      return "YY";
+    case 7:
+      return "Y";
+    default:
+      return "";
   }
-  return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
+}
+
+/** Clamp partial MM while typing (same idea as InputText cc expiry). */
+function normalizeDigits(d: string): string {
+  let next = digitsOnly(d).slice(0, 8);
+  if (next.length === 1 && Number(next) > 1) {
+    next = `0${next}`;
+  }
+  if (next.length >= 2) {
+    const mm = Number(next.slice(0, 2));
+    if (mm === 0) next = `01${next.slice(2)}`;
+    else if (mm > 12) next = `12${next.slice(2)}`;
+  }
+  return next.slice(0, 8);
+}
+
+function allowDateKey(e: React.KeyboardEvent<HTMLInputElement>) {
+  if (e.ctrlKey || e.metaKey || e.altKey) return true;
+  const { key } = e;
+  if (
+    key === "Backspace" ||
+    key === "Delete" ||
+    key === "Tab" ||
+    key === "Escape"
+  ) {
+    return true;
+  }
+  if (
+    key === "ArrowLeft" ||
+    key === "ArrowRight" ||
+    key === "ArrowUp" ||
+    key === "ArrowDown" ||
+    key === "Home" ||
+    key === "End"
+  ) {
+    return true;
+  }
+  return /^\d$/.test(key);
 }
 
 export default function InputDate({
@@ -30,17 +100,29 @@ export default function InputDate({
   disabled = false,
   onChange,
   shouldValidate = false,
-  showTrailingIcon = true,
 }: InputDateProps) {
+  const id = useId();
+  const errorId = useId();
   const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState(value);
+  const [digits, setDigits] = useState(() => digitsOnly(value));
   const [error, setError] = useState("");
 
-  const hasValue = inputValue.length > 0;
+  useEffect(() => {
+    setDigits(digitsOnly(value));
+  }, [value]);
+
+  const filled = digitsToFilled(digits);
+  const mask = maskSuffix(digits.length);
+  const showMirror = isFocused || digits.length > 0;
+  const hasPartialDate = digits.length > 0 && digits.length < 8;
+  const showMask =
+    Boolean(mask) && (isFocused || (Boolean(error) && hasPartialDate));
+  const inputDisplay = filled;
+  const hasValue = digits.length > 0;
   const isLabelFloating = isFocused || hasValue;
 
-  const validateInput = (val: string) => {
-    const result = dateOfBirthValidation.safeParse(val);
+  const validateInput = (raw: string) => {
+    const result = inputDateValidation.safeParse(raw);
     setError(
       result.success ? "" : result.error.issues[0]?.message || "Invalid",
     );
@@ -48,65 +130,114 @@ export default function InputDate({
 
   useEffect(() => {
     if (shouldValidate) {
-      validateInput(inputValue);
+      validateInput(digits);
     }
   }, [shouldValidate]);
 
+  const commitDigits = (next: string) => {
+    const normalized = normalizeDigits(next);
+    setDigits(normalized);
+    onChange?.(normalized);
+    return normalized;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const next = formatMMDDYYYY(e.target.value);
-    setInputValue(next);
-    onChange?.(next);
+    const normalized = commitDigits(digitsOnly(e.target.value));
+    if (error) {
+      validateInput(normalized);
+    }
   };
 
   const handleBlur = () => {
     setIsFocused(false);
-    const result = dateOfBirthValidation.safeParse(inputValue);
-    if (!result.success) {
-      setError(result.error.issues[0].message);
-    } else {
+    if (digits.length === 0) {
       setError("");
+      return;
+    }
+    validateInput(digits);
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!allowDateKey(e)) {
+      e.preventDefault();
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pasted = digitsOnly(e.clipboardData.getData("text") || "");
+    if (!pasted.length) return;
+    const normalized = commitDigits(digits + pasted);
+    if (error) {
+      validateInput(normalized);
+    }
+  };
+
+  const inputClassName = [
+    disabled ? styles.disabled : styles.input,
+    error ? styles.inputError : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const mirrorClassName = [
+    styles.valueMirror,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const inputBaseClassName = [
+    styles.inputBase,
+    error ? styles.inputBaseInvalid : "",
+    disabled ? styles.inputBaseDisabled : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <div className={styles.base}>
-      <div className={styles.inputBase}>
-        <input
-          type="text"
-          inputMode="numeric"
-          autoComplete="bday"
-          placeholder=""
-          value={inputValue}
-          onChange={handleChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={handleBlur}
-          className={`${disabled ? styles.disabled : styles.input} ${error ? styles.inputError : ""}`}
-          disabled={disabled}
-          aria-invalid={error ? true : undefined}
-        />
-        <label
-          className={`${styles.label} ${isLabelFloating ? styles.labelFloating : ""}`}
-        >
-          {label}
-        </label>
-        {showTrailingIcon && (
-          <div className={styles.icon} aria-hidden>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15.8333 3.33334H15V2.50001C15 2.27989 14.9122 2.06893 14.7559 1.9126C14.5996 1.75627 14.3886 1.66834 14.1683 1.66834C13.9482 1.66834 13.7372 1.75627 13.5809 1.9126C13.4246 2.06893 13.3333 2.27989 13.3333 2.50001V3.33334H6.66667V2.50001C6.66667 2.27989 6.57874 2.06893 6.42241 1.9126C6.26608 1.75627 6.05511 1.66834 5.83499 1.66834C5.61487 1.66834 5.40391 1.75627 5.24758 1.9126C5.09125 2.06893 5.00332 2.27989 5.00332 2.50001V3.33334H4.16667C3.72464 3.33334 3.30072 3.50893 2.98816 3.82149C2.67559 4.13405 2.5 4.55797 2.5 5.00001V15.8333C2.5 16.2754 2.67559 16.6993 2.98816 17.0119C3.30072 17.3244 3.72464 17.5 4.16667 17.5H15.8333C16.2754 17.5 16.6993 17.3244 17.0119 17.0119C17.3244 16.6993 17.5 16.2754 17.5 15.8333V5.00001C17.5 4.55797 17.3244 4.13405 17.0119 3.82149C16.6993 3.50893 16.2754 3.33334 15.8333 3.33334ZM15.8333 15.8333H4.16667V8.33334H15.8333V15.8333ZM15.8333 6.66668H4.16667V5.00001H15.8333V6.66668Z"
-                fill="#323D54"
-              />
-            </svg>
-          </div>
-        )}
-      </div>
-      {error && <div className={styles.error}>{error}</div>}
+      <label className={styles.fieldShell} htmlFor={id}>
+        <div className={inputBaseClassName}>
+          {showMirror ? (
+            <div className={mirrorClassName} aria-hidden>
+              <span className={styles.filled}>{filled}</span>
+              {showMask ? (
+                <span className={styles.mask}>{mask}</span>
+              ) : null}
+            </div>
+          ) : null}
+          <input
+            id={id}
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={inputDisplay}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+            onPaste={handlePaste}
+            className={inputClassName}
+            disabled={disabled}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={error ? errorId : undefined}
+          />
+          <span
+            className={`${styles.label} ${isLabelFloating ? styles.labelFloating : ""}`}
+          >
+            {label}
+          </span>
+        </div>
+      </label>
+      {error ? (
+        <div id={errorId} className={styles.error} role="alert">
+          {error}
+        </div>
+      ) : null}
     </div>
   );
 }

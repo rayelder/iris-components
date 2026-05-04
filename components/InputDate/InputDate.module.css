@@ -1,0 +1,189 @@
+.base {
+  margin-bottom: var(--iris-form-gap);
+}
+
+.fieldShell {
+  display: block;
+  cursor: text;
+  width: 100%;
+}
+
+.inputBase {
+  position: relative;
+  border-radius: var(--iris-radius-sm);
+  background-color: var(--iris-color-form-fill-enabled);
+}
+
+.inputBaseInvalid {
+  background-color: var(--iris-color-form-fill-invalid);
+}
+
+.inputBaseInvalid .filled {
+  color: var(--iris-color-red-600);
+}
+
+.inputBaseInvalid .mask {
+  color: var(--iris-color-red-500);
+}
+
+.inputBaseInvalid .label,
+.inputBaseInvalid .labelFloating {
+  color: var(--iris-color-red-600);
+}
+
+.inputBaseDisabled {
+  background-color: var(--iris-color-form-fill-disabled);
+}
+
+.valueMirror {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  padding: 1.625rem 0.8125rem 0.5rem 0.875rem;
+  pointer-events: none;
+  font-family: var(--iris-font-regular);
+  font-size: var(--iris-font-size-base);
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.valueMirrorWithIcon {
+  padding-right: 2.75rem;
+}
+
+.filled {
+  color: var(--iris-color-form-text-value);
+}
+
+.mask {
+  color: var(--iris-color-form-text-placeholder);
+}
+
+.input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 3.5rem;
+  padding: 1.625rem 0.8125rem 0.5rem 0.875rem;
+  border: 1px solid var(--iris-color-form-stroke-enabled);
+  border-radius: var(--iris-radius-sm);
+  font-family: var(--iris-font-regular);
+  font-size: var(--iris-font-size-base);
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: transparent;
+  caret-color: var(--iris-color-form-text-value);
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+
+.inputWithIcon {
+  padding-right: 2.75rem;
+}
+
+.input::selection {
+  background-color: var(--iris-color-secondary-gray-200);
+}
+
+.disabled {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 3.5rem;
+  padding: 1.625rem 0.8125rem 0.5rem 0.875rem;
+  border: 1px solid var(--iris-color-form-stroke-disabled);
+  border-radius: var(--iris-radius-sm);
+  font-family: var(--iris-font-regular);
+  font-size: var(--iris-font-size-base);
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  color: transparent;
+  caret-color: var(--iris-color-form-text-disabled);
+  background-color: transparent;
+  cursor: not-allowed;
+  transition: border-color 0.2s;
+}
+
+.disabledWithIcon {
+  padding-right: 2.75rem;
+}
+
+.input:hover:not(:disabled):not(.inputError) {
+  border-color: var(--iris-color-form-stroke-hover);
+}
+
+.input:focus {
+  outline: 3px solid var(--iris-color-form-stroke-focus-ring);
+  outline-offset: 0;
+  border-color: var(--iris-color-form-stroke-focus) !important;
+}
+
+.input:focus:not(.inputError) {
+  caret-color: var(--iris-color-form-text-value);
+}
+
+.label {
+  position: absolute;
+  left: 0.8125rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  font-family: var(--iris-font-regular);
+  font-size: var(--iris-font-size-base);
+  color: var(--iris-color-form-text-placeholder);
+  pointer-events: none;
+  transition:
+    top 0.2s ease-in-out,
+    left 0.2s ease-in-out,
+    font-size 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.labelFloating {
+  left: var(--iris-floating-label-left);
+  top: var(--iris-floating-label-top);
+  font-family: var(--iris-font-medium);
+  font-size: var(--iris-font-size-sm);
+  color: var(--iris-color-form-text-label);
+}
+
+.error {
+  margin: var(--iris-form-gap-sm) 0 0 0;
+  color: var(--iris-color-red-600);
+  font-family: var(--iris-font-regular);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.inputError {
+  border-color: var(--iris-color-form-stroke-invalid);
+  background-color: transparent;
+  caret-color: var(--iris-color-red-600);
+}
+
+.inputError:hover:not(:disabled):not(:focus) {
+  border-color: var(--iris-color-red-700) !important;
+}
+
+.inputError:focus {
+  outline: 3px solid var(--iris-color-form-stroke-invalid-focus-ring);
+  border-color: var(--iris-color-form-stroke-invalid) !important;
+}
+
+.icon {
+  position: absolute;
+  right: 1rem;
+  top: 60%;
+  transform: translateY(-60%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.inputBaseInvalid .icon svg path {
+  fill: var(--iris-color-red-600) !important;
+}

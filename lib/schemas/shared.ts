@@ -67,15 +67,28 @@ export const shippingAddressValidation = z
   .string()
   .min(1, "Default shipping consent is required");
 
-export const dateOfBirthValidation = z
+/** Eight digits MMDDYYYY from `InputDate` (accepts any string; non-digits stripped). */
+export const inputDateValidation = z
   .string()
-  .min(1, "Date of birth is required")
-  .regex(
-    /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(\d{4})$/,
-    "Enter date as MM/DD/YYYY",
-  )
-  .superRefine((val, ctx) => {
-    const [mm, dd, yyyy] = val.split("/").map(Number);
+  .transform((s) => s.replace(/\D/g, "").slice(0, 8))
+  .superRefine((digits, ctx) => {
+    if (digits.length === 0) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Date of birth is required",
+      });
+      return;
+    }
+    if (digits.length !== 8) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Enter date of birth as MM/DD/YYYY",
+      });
+      return;
+    }
+    const mm = Number(digits.slice(0, 2));
+    const dd = Number(digits.slice(2, 4));
+    const yyyy = Number(digits.slice(4, 8));
     const parsed = new Date(yyyy, mm - 1, dd);
     if (
       parsed.getFullYear() !== yyyy ||
@@ -84,25 +97,7 @@ export const dateOfBirthValidation = z
     ) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "Enter a valid date",
-      });
-      return;
-    }
-    const endOfToday = new Date();
-    endOfToday.setHours(23, 59, 59, 999);
-    if (parsed > endOfToday) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Date cannot be in the future",
-      });
-      return;
-    }
-    const oldest = new Date();
-    oldest.setFullYear(oldest.getFullYear() - 120);
-    if (parsed < oldest) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Please enter a valid date",
+        message: "Enter a valid date of birth",
       });
     }
   });
